@@ -1,0 +1,10 @@
+record_num	uniform	title	issn	issn2	corp	alt
+1000157		Comptes rendus de l'Académie des sciences. Série III, Sciences de la vie	0764-4469	0249-6313		
+1000272		Advances in magnetic and optical resonance	1057-2732			
+1001443		Children's health care	0273-9615	0145-3351		
+1001451		Advances in food and nutrition research	1043-4526			
+1001486		Chemical guide to the United States	0069-2972			
+1001564		Cosmetic science	0197-1344			
+1001600		The Journal of the Acoustical Society of America	0001-4966			
+1003018		Chung-hua min kuo Tʻai Min ti chʻü jen kʻou tʻung chi. Taiwan-Fukien demographic fact book, Republic of China	1019-7192			
+1003066		Nursing diagnosis : ND : the official journal of the North American Nursing Diagnosis Association	1046-7459			
