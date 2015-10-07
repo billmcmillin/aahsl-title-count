@@ -95,7 +95,7 @@ FROM
 	
 		AND  (i.bcode2 = 's' OR (i.bcode2 = 'm' AND y006.p00 = 's'))
 	
-		AND i.cataloging_date_gmt <= '2014-06-30' -- cat date falls on or before last day of fiscal year
+		AND i.cataloging_date_gmt <= '2015-06-30' -- cat date falls on or before last day of fiscal year
 		AND (bibloc.location_code = 'bcdrom'
 		OR bibloc.location_code = 'bcler' 
 		OR bibloc.location_code = 'bcint' 
