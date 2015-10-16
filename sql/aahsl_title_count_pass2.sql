@@ -1,6 +1,6 @@
 ﻿/*
 
-PASS 2 - AAHSL title count query.
+PASS 1 - AAHSL title count query
 
 Full data set requires two queries: *pass1, *pass2. Run queries in pgAdmin3, output to .tsv, and combine files manually.
 
@@ -8,7 +8,7 @@ Full data set requires two queries: *pass1, *pass2. Run queries in pgAdmin3, out
 
 */
 
-SELECT DISTINCT ON (init.record_num) init.record_num, ca.field_content as corp, alt_title.field_content as alt
+SELECT DISTINCT ON (init.record_num) init.record_num, uni.field_content AS uniform, t.field_content AS title, issn.field_content as issn
 
 FROM
 
@@ -83,7 +83,7 @@ FROM
 			OR call.call_number_norm BETWEEN 'vg 2000.00' and 'vg 2005.99'
 			OR call.call_number_norm BETWEEN 'hv 5000.00' and 'hv 5999.99'
 			OR call.call_number_norm BETWEEN 'ha    0.00' and 'ha 4737.99'
-		
+
 			) items
 
 		JOIN sierra_view.bib_view i ON (items.record_id = i.id)
@@ -109,5 +109,6 @@ FROM
 
 	) init
 
-LEFT JOIN sierra_view.varfield ca ON (init.id = ca.record_id AND ca.marc_tag LIKE '11%')
-LEFT JOIN sierra_view.varfield alt_title ON (init.id = alt_title.record_id AND alt_title.marc_tag = '240')
+LEFT JOIN sierra_view.varfield uni ON (init.id = uni.record_id AND uni.marc_tag = '130')
+LEFT JOIN sierra_view.varfield t ON (init.id = t.record_id AND t.marc_tag = '245')
+LEFT JOIN sierra_view.varfield issn ON (init.id = issn.record_id AND issn.marc_tag = '022')

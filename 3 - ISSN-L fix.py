@@ -33,3 +33,6 @@ for row in workingIndex:
 		next
 	finally:
 		next
+
+output = open("master index ISSN and title fixed.txt", "w")
+print>>output, "\n".join(finalIndex)
