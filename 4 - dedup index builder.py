@@ -1,5 +1,9 @@
 # -*- coding: utf-8 -*-
-import re
+import re, sys
+
+orig_stdout = sys.stdout
+fOut = file('master index ISSN and title fixed.txt', 'w')
+sys.stdout = fOut
 
 index = open("master index ISSN fixed.txt").read().split("\n")
 
@@ -15,5 +19,7 @@ for row in index:
 	controlledTitle = re.sub("(^[Tt]he )|(^[Aa] )|(^[Aa]n )|(^[Ll][ae]s? )", "", controlledTitle)
 	print "%s\t%s\t%s\t%s" % (controlledTitle.lower(), line[0], line[1].lower(), line[2])
 
-#output = open("master index ISSN and title fixed.txt", "w")
-#print>>output, "\n".join(results)
+
+sys.stdout = orig_stdout
+fOut.close()
+
