@@ -15,11 +15,14 @@ The ISSN-L data is available from the [ISSN center](http://www.issn.org/services
 
 Export all journals, with subjects in multiple-columns, in UTF-8, unjoined (as `report.csv`). Then scope the list to journals using the following command:
 ```
-`grep -f ./ss-subject-list.txt report.csv > "SS title list journals subjects.csv"`
+grep -i data/report.csv -f clean_subs.txt > "SS title list journals subjects.csv"
 ```
 ### UCLID
 
 Acquire data in csv format using the included PGSQL queries. Filter to remove delimiters and retain only the first two ISSNs.
+
+```psql -t "sslmode=require host=$HOSTNAME user=$USERNAME port=$PORT dbname=$DBNAME" -F $'\t' --no-align -f aahsl_title_count_pass1.sql > pass1.csv
+```
 
 ### Steps
 

@@ -43,7 +43,7 @@ ambigious = {
 	'annali' : "",
 }
 
-with open('UCLID_combined.txt', 'rb') as f:
+with open('UCLID_combined_fixed.txt', 'rb') as f:
 	reader = csv.reader(f, delimiter='\t')
 	for row in reader:
 		line = re.split('\\\\t', row[0])
@@ -68,7 +68,6 @@ with open('UCLID_combined.txt', 'rb') as f:
 				issn = line[3]
 		else:
 			issn = ""
-		print title + "\t" + issn + "\t" + line[0] 
-	
+		print title + "\t" + issn + "\t" + line[0]
 	sys.stdout = orig_stdout
 fOut.close()

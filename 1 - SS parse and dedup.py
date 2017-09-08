@@ -6,17 +6,17 @@ import re
 
 ssFilename = "SS title list journals subjects.csv"
 ssFile = open(ssFilename, "r")
-ssReader = csv.reader(ssFile)
+ssReader = csv.reader(ssFile, delimiter='\t')
 
 ##Work through SS file and save title
 ssIndex = {}
 for row in ssReader:
-	row[1] = re.sub("&", "and", row[1])
+	row[0] = re.sub("&", "and", row[0])
 	if row[2]:
-		ssIndex[row[1]] = row[2]
+		ssIndex[row[0]] = row[9]
 		continue
-	elif row[3]:
-		ssIndex[row[1]] = row[3]
+	elif row[10]:
+		ssIndex[row[0]] = row[10]
 		continue
 	else:
 		ssIndex[row[1]] = ""
