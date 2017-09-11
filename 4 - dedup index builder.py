@@ -7,9 +7,6 @@ sys.stdout = fOut
 
 index = open("master index ISSN fixed.txt").read().split("\n")
 
-results = []
-
-
 for row in index:
 	line = row.split("\t")
 	controlledTitle = re.sub("[\(\)\[\],\./:\-;\?'=]", " ", line[0])

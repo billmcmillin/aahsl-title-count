@@ -15,6 +15,12 @@ for row in index:
 		else:
 			line.append(0)
 			ISSNDedupDictionary[line[2]] = line
+	elif line[3]:
+		if line[3] in ISSNDedupDictionary:
+			ISSNDedupDictionary[line[3]][4] = 1
+		else:
+			line.append(0)
+			ISSNDedupDictionary[line[3]] = line
 	else:
 		titleDedupDictionary[line[0]] = line
 

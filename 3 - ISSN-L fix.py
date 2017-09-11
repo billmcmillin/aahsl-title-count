@@ -11,7 +11,7 @@ index = open("master index draft.txt").read()
 
 ##alternate ISSN-L fix
 issnDict = {}
-ISSNTable = open("data/20170828.ISSN-to-ISSN-L.txt").read().split("\n")
+ISSNTable = open("data/20170828.ISSN-to-ISSN-L.txt").read().split("\r\n")
 ISSNTable.pop()
 for row in ISSNTable:
 	row = row.split("\t")
@@ -20,7 +20,6 @@ for row in ISSNTable:
 finalIndex = []
 workingIndex = index.split("\n")
 for row in workingIndex:
-	print(row)
 	fields = row.split("\t")
 	try:
 		fields[1] = issnDict[fields[1]]
@@ -35,5 +34,5 @@ for row in workingIndex:
 		finalIndex.append(fields)
 		next
 
-output = open("master index ISSN and title fixed.txt", "w")
+output = open("master index ISSN fixed.txt", "w")
 print>>output, "\n".join(finalIndex)

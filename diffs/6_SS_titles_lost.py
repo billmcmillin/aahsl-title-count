@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 
-indexCurrentYear = open("SS_titles_deduped_2015.txt").read().split("\n")
+indexCurrentYear = open("SS_titles_deduped_2017.txt").read().split("\n")
 indexCurrentYear.pop(-1)
 
-indexLastYear = open("SS_titles_deduped_2014.txt").read().split("\n")
+indexLastYear = open("SS_titles_deduped_2015.txt").read().split("\n")
 indexLastYear.pop(-1)
 
 # indexCurrentYear = open("test1.txt").read().split("\r")
@@ -33,7 +33,8 @@ for row in indexCurrentYear:
 	#if it has no ISSN, put it in the titleDedup dictionary			
 	else:
 	 	titleDedupDictionaryCurrent[line[0]] = line
-	
+
+print(ISSNDedupDictionaryCurrent)
 
 #add unmatched items from ISSN diction to title dictionary:
 for key in ISSNDedupDictionaryCurrent:
@@ -74,7 +75,7 @@ for key in titleDedupDictionaryLast:
 	if not (titleDedupDictionaryLast[key][0] in titleDedupDictionaryCurrent):
 		if not (titleDedupDictionaryLast[key][0] in ISSNresults):
 			results.append("\t".join(titleDedupDictionaryLast[key][0:2]))
-			print titleDedupDictionaryLast[key][0]
+			#print titleDedupDictionaryLast[key][0]
 
 
 output = open("titlesLostSS.txt", "w")

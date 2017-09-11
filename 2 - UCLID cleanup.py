@@ -49,12 +49,14 @@ with open('UCLID_combined_fixed.txt', 'rb') as f:
 		line = re.split('\\\\t', row[0])
 		titleFlag = 1
 		if line[1]:
-			title = line[1]
+			title = re.sub("^\|a", "", line[1])
+			title = re.sub(":\|.*", "", title)
+			title = re.sub("\|[a-z]*", "", title)
 			titleFlag = 0
 		if titleFlag:
 			if(len(line) > 2):
-				if line[2].lower() in ambigious:
-					title = line[2] + " " + line[5]
+				if title.lower() in ambigious:
+					title = title + " " + line[5]
 				else:
 					title = line[2]
 		title = re.sub("\[electronic resource\]", "", title)
@@ -63,11 +65,8 @@ with open('UCLID_combined_fixed.txt', 'rb') as f:
 		title = re.sub("\(CD\-ROM\)", "", title)
 		title = re.sub(" : Online\)", "", title)
 		title = re.sub("&", "and", title)
-		if(len(line) > 3):
-			if line[3]:
-				issn = line[3]
-		else:
-			issn = ""
-		print title + "\t" + issn + "\t" + line[0]
+		issn = re.sub("^\|a","", line[2])
+		issn2 = re.sub("\|[0-9a-z]", "\t", issn)
+		print title.strip() + "\t" + issn + "\t" + issn2
 	sys.stdout = orig_stdout
 fOut.close()
